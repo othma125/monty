@@ -1,3 +1,4 @@
+#include "monty.h"
 /**
  * function_selector - select the right function in term of opcode
  * @opcode: The opcode to match.
