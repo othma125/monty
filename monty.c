@@ -7,7 +7,7 @@
  */
 void function_selector(char *opcode, stack_t **stk, unsigned int n)
 {
-	instruction_t op_funcs[] = {
+	instruction_t functions[] = {
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
@@ -29,7 +29,7 @@ void function_selector(char *opcode, stack_t **stk, unsigned int n)
 	};
 	int i;
 
-	for (i = 0; op_funcs[i].opcode; i++)
-		if (strcmp(opcode, op_funcs[i].opcode) == 0)
-			op_funcs[i].f(stk, n);
+	for (i = 0; functions[i].opcode; i++)
+		if (strcmp(opcode, functions[i].opcode) == 0)
+			functions[i].f(stk, n);
 }
