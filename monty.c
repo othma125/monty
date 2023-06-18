@@ -5,7 +5,7 @@
  * @n: unsigned number
  * Return: none
  */
-void function_selector(char *opcode, stack_t** stk, unsigned int n)
+void function_selector(char *opcode, stack_t **stk, unsigned int n)
 {
 	instruction_t op_funcs[] = {
 		{"push", push},
