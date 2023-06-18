@@ -28,7 +28,11 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#define STACK 0
+#define QUEUE 1
 
 
 
