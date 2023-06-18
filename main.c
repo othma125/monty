@@ -7,7 +7,7 @@
  */
 int main(int argc, char **argv)
 {
-	FILE *script_file = NULL;
+	FILE *monty_file = NULL;
 	int exit_stat = 0;
 
 	if (argc != 2)
@@ -15,13 +15,13 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		return (1);
 	}
-	script_file = fopen(argv[1], "r");
-	if (!script_file)
+	monty_file = fopen(argv[1], "r");
+	if (!monty_file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (1);
 	}
-	exit_stat = monty(script_file);
-	fclose(script_file);
+	exit_stat = monty(monty_file);
+	fclose(monty_file);
 	return (exit_stat);
 }
