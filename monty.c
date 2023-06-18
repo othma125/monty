@@ -3,9 +3,9 @@
  * @opcode: The opcode to match.
  * @stk: stack list
  * @n: unsigned number
- * Return: none
+ * Return: success or failure
  */
-void function_selector(char *opcode, stack_t **stk, unsigned int n)
+int function_selector(char *opcode, stack_t **stk, unsigned int n)
 {
 	instruction_t functions[] = {
 		{"push", push},
@@ -31,5 +31,9 @@ void function_selector(char *opcode, stack_t **stk, unsigned int n)
 
 	for (i = 0; functions[i].opcode; i++)
 		if (strcmp(opcode, functions[i].opcode) == 0)
+		{
 			functions[i].f(stk, n);
+			return (1);
+		}
+	return (0);
 }
