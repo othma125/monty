@@ -23,5 +23,5 @@ int main(int argc, char **argv)
 	}
 	exit_stat = monty(monty_file);
 	fclose(monty_file);
-	return (exit_stat);
+	return (1 - exit_stat);
 }
