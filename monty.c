@@ -58,13 +58,13 @@ int monty(FILE *f)
 	unsigned int number = 0;
 	char *line = NULL, **tokens;
 	stack_t *stack = NULL;
-	int exit_stat = 1;
+	int exit_stat = EXIT_SUCCESS;
 	size_t len;
 
 	if (create_stack(&stack) == 0)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		return (1);
+		return (EXIT_FAILURE);
 	}
 	while (getline(&line, &len, f))
 	{
