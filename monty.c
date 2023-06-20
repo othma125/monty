@@ -2,11 +2,9 @@
 /**
  * function_selector - select the right function in term of opcode
  * @opcode: The opcode to match.
- * @stk: stack list
- * @n: unsigned number
- * Return: success or failure
+ * Return: function pointer
  */
-int function_selector(char *opcode, stack_t **stk, unsigned int n)
+void (*function_selector(char *opcode))(stack_t**, unsigned int)
 {
 	instruction_t functions[] = {
 		{"push", push},
@@ -32,11 +30,8 @@ int function_selector(char *opcode, stack_t **stk, unsigned int n)
 
 	for (i = 0; functions[i].opcode; i++)
 		if (strcmp(opcode, functions[i].opcode) == 0)
-		{
-			functions[i].f(stk, n);
-			return (1);
-		}
-	return (0);
+			return (functions[i].f);
+	return (NULL);
 }
 /**
  * _free - frees
