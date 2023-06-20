@@ -28,7 +28,6 @@ void pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		return;
 	}
-
 	printf("%c\n", (*stack)->next->n);
 }
 /**
@@ -41,13 +40,11 @@ void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack)->next;
 
+	(void)line_number;
 	while (tmp && tmp->n > 0 && tmp->n <= 127)
 	{
 		printf("%c", tmp->n);
 		tmp = tmp->next;
 	}
-
 	printf("\n");
-
-	(void)line_number;
 }
