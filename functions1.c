@@ -69,10 +69,11 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL)
 	{
-		set_op_tok_error(pint_error(line_number));
-		return;
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		return (0);
 	}
 	printf("%d\n", (*stack)->next->n);
+	return (1);
 }
 /**
  * pop - monty pop
@@ -110,7 +111,7 @@ int swap(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		return;
+		return (0);
 	}
 	tmp = (*stack)->next->next;
 	(*stack)->next->next = tmp->next;
@@ -120,4 +121,5 @@ int swap(stack_t **stack, unsigned int line_number)
 	tmp->next = (*stack)->next;
 	tmp->prev = *stack;
 	(*stack)->next = tmp;
+	return (1);
 }
