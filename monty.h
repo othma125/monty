@@ -40,7 +40,7 @@ char **_strtok(char *);
 void free_stack(stack_t **);
 int create_stack(stack_t **);
 void _free(char **);
-/* OPCODE FUNCTIONS
+/* OPCODE FUNCTIONS*/
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
@@ -58,7 +58,6 @@ void rotl(stack_t **, unsigned int);
 void rotr(stack_t **, unsigned int);
 void stack(stack_t **, unsigned int);
 void queue(stack_t **, unsigned int);
-*/
 
 
 
