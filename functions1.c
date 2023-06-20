@@ -3,9 +3,9 @@
  * push - monty push
  * @stack: stack
  * @line_number: integer
- * Return: success
+ * Return: none
  */
-int push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *new = malloc(sizeof(stack_t));
 	int i;
@@ -13,12 +13,12 @@ int push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		return (0);
+		return;
 	}
 	if (op_toks[1] == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		return (0);
+		return;
 	}
 	new->n = atoi(op_toks[1]);
 	if ((*stack)->n == STACK)
@@ -39,15 +39,14 @@ int push(stack_t **stack, unsigned int line_number)
 		new->next = NULL;
 		tmp->next = new;
 	}
-	return (1);
 }
 /**
  * pall - monty pall
  * @stack: stack
  * @line_number: integer
- * Return: success
+ * Return: none
  */
-int pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack)->next;
 
@@ -57,61 +56,58 @@ int pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
-	return (1);
 }
 /**
  * pint - monty pint
  * @stack: stack
  * @line_number: integer
- * Return: success
+ * Return: none
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		return (0);
+		return;
 	}
 	printf("%d\n", (*stack)->next->n);
-	return (1);
 }
 /**
  * pop - monty pop
  * @stack: stack
  * @line_number: integer
- * Return: success
+ * Return: none
  */
-int pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *nxt = NULL;
 
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		return (0);
+		return;
 	}
 	nxt = (*stack)->next->next;
 	free((*stack)->next);
 	if (nxt)
 		nxt->prev = *stack;
 	(*stack)->next = nxt;
-	return (1);
 }
 
 /**
  * swap - monty swap
  * @stack: stack
  * @line_number: integer
- * Return: success
+ * Return: none
  */
-int swap(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		return (0);
+		return;
 	}
 	tmp = (*stack)->next->next;
 	(*stack)->next->next = tmp->next;
@@ -121,5 +117,4 @@ int swap(stack_t **stack, unsigned int line_number)
 	tmp->next = (*stack)->next;
 	tmp->prev = *stack;
 	(*stack)->next = tmp;
-	return (1);
 }
