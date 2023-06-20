@@ -5,7 +5,6 @@
  * @stk: stack list
  * @n: unsigned number
  * Return: success or failure
- */
 int function_selector(char *opcode, stack_t **stk, unsigned int n)
 {
 	instruction_t functions[] = {
@@ -38,6 +37,7 @@ int function_selector(char *opcode, stack_t **stk, unsigned int n)
 		}
 	return (0);
 }
+ */
 /**
  * _free - frees
  * @tokens: operation tokens
@@ -57,24 +57,28 @@ void _free(char **tokens)
  * @f: monty file
  * return: success
  */
-int monty(File *f)
+int monty(FILE *f)
 {
 	unsigned int number = 0;
 	char *line = NULL, **tokens;
-	size_t len;
 	stack_t *stack = NULL;
 	int exit_stat = 1;
 
-	while (getline(&line, &len, f) != -1)
+	if (create_stack(&stack) == 0)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		return (1);
+	}
+	while (fgets(line, sizeof(line), f))
 	{
 		number++;
 		if (line[0] == '#')
 		{
 			free(line);
 			continue;
-		}
-		
+		}		
 	}
 	free(line);
+	free_stack(&stack);
 	return (exit_stat);
 }

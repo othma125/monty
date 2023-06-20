@@ -36,10 +36,11 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 int monty(FILE *);
-int function_selector(char*, stack_t**, unsigned int);
 char **_strtok(char *);
+void free_stack(stack_t **);
 int create_stack(stack_t **);
-/* OPCODE FUNCTIONS */
+void _free(char **);
+/* OPCODE FUNCTIONS
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
@@ -57,7 +58,7 @@ void rotl(stack_t **, unsigned int);
 void rotr(stack_t **, unsigned int);
 void stack(stack_t **, unsigned int);
 void queue(stack_t **, unsigned int);
-
+*/
 
 
 
