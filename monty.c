@@ -49,6 +49,17 @@ void _free(char **tokens)
 	free(tokens);
 }
 /**
+ * args_count - check code
+ * @args: arguments
+ * Return: argc
+ */
+int args_count(char **args)
+{
+        if (args == NULL || *args == NULL)
+                return (0);
+        return (1 + args_count(args + 1));
+}
+/**
  * monty - check code
  * @f: monty file
  * Return: success
