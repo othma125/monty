@@ -37,6 +37,8 @@ typedef struct instruction_s
 } instruction_t;
 int monty(FILE *);
 int function_selector(char*, stack_t**, unsigned int);
+char **_strtok(char *);
+int create_stack(stack_t **);
 /* OPCODE FUNCTIONS */
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);

@@ -38,3 +38,43 @@ int function_selector(char *opcode, stack_t **stk, unsigned int n)
 		}
 	return (0);
 }
+/**
+ * _free - frees
+ * @tokens: operation tokens
+ */
+void _free(char **tokens)
+{
+	int i = 0;
+
+	if (tokens == NULL)
+		return;
+	for (i = 0; tokens[i]; i++)
+		free(tokens[i]);
+	free(tokens);
+}
+/**
+ * monty - check code
+ * @f: monty file
+ * return: success
+ */
+int monty(File *f)
+{
+	unsigned int number = 0;
+	char *line = NULL, **tokens;
+	size_t len;
+	stack_t *stack = NULL;
+	int exit_stat = 1;
+
+	while (getline(&line, &len, f) != -1)
+	{
+		number++;
+		if (line[0] == '#')
+		{
+			free(line);
+			continue;
+		}
+		
+	}
+	free(line);
+	return (exit_stat);
+}
