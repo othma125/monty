@@ -5,4 +5,5 @@
 
 
 
+# MOVE TO BLOCK 0 AND INCREASE BY ASCII '0' (DEC 48)
 <<++++++++++++++++++++++++++++++++++++++++++++++++.
