@@ -7,35 +7,21 @@
  */
 int push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp, *new;
+	stack_t *tmp, *new = malloc(sizeof(stack_t));
 	int i;
 
-	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		set_op_tok_error(malloc_error());
-		return;
+		fprintf(stderr, "Error: malloc failed\n");
+		return (0);
 	}
-
 	if (op_toks[1] == NULL)
 	{
-		set_op_tok_error(no_int_error(line_number));
-		return;
-	}
-
-	for (i = 0; op_toks[1][i]; i++)
-	{
-		if (op_toks[1][i] == '-' && i == 0)
-			continue;
-		if (op_toks[1][i] < '0' || op_toks[1][i] > '9')
-		{
-			set_op_tok_error(no_int_error(line_number));
-			return;
-		}
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		return (0);
 	}
 	new->n = atoi(op_toks[1]);
-
-	if (check_mode(*stack) == STACK) /* STACK mode insert at front */
+	if ((*stack)->n == STACK)
 	{
 		tmp = (*stack)->next;
 		new->prev = *stack;
@@ -44,7 +30,7 @@ int push(stack_t **stack, unsigned int line_number)
 			tmp->prev = new;
 		(*stack)->next = new;
 	}
-	else /* QUEUE mode insert at end */
+	else
 	{
 		tmp = *stack;
 		while (tmp->next)
@@ -53,6 +39,7 @@ int push(stack_t **stack, unsigned int line_number)
 		new->next = NULL;
 		tmp->next = new;
 	}
+	return (1);
 }
 /**
  * pall - monty pall
@@ -70,6 +57,7 @@ int pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
+	return (1);
 }
 /**
  * pint - monty pint
@@ -94,19 +82,19 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 int pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *next = NULL;
+	stack_t *nxt = NULL;
 
 	if ((*stack)->next == NULL)
 	{
-		set_op_tok_error(pop_error(line_number));
-		return;
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		return (0);
 	}
-
-	next = (*stack)->next->next;
+	nxt = (*stack)->next->next;
 	free((*stack)->next);
-	if (next)
+	if (nxt)
 		next->prev = *stack;
-	(*stack)->next = next;
+	(*stack)->next = nxt;
+	return (1);
 }
 
 /**
@@ -121,10 +109,9 @@ int swap(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
-		set_op_tok_error(short_stack_error(line_number, "swap"));
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		return;
 	}
-
 	tmp = (*stack)->next->next;
 	(*stack)->next->next = tmp->next;
 	(*stack)->next->prev = tmp;
