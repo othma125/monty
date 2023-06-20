@@ -7,7 +7,7 @@
  */
 
 char **op_toks = NULL;
-
+int success = 1;
 int main(int argc, char **argv)
 {
 	FILE *monty_file = NULL;

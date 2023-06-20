@@ -55,9 +55,9 @@ void _free(char **tokens)
  */
 int args_count(char **args)
 {
-        if (args == NULL || *args == NULL)
-                return (0);
-        return (1 + args_count(args + 1));
+	if (args == NULL || *args == NULL)
+		return (0);
+	return (1 + args_count(args + 1));
 }
 /**
  * monty - check code

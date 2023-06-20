@@ -20,7 +20,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL)
 	{
-		set_op_tok_error(pchar_error(line_number, "stack empty"));
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		return;
 	}
 	if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
