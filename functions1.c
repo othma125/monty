@@ -93,7 +93,7 @@ int pop(stack_t **stack, unsigned int line_number)
 	nxt = (*stack)->next->next;
 	free((*stack)->next);
 	if (nxt)
-		next->prev = *stack;
+		nxt->prev = *stack;
 	(*stack)->next = nxt;
 	return (1);
 }
