@@ -5,6 +5,7 @@
  * @argv: arguments set
  * Return: success or failure
  */
+
 int main(int argc, char **argv)
 {
 	FILE *monty_file = NULL;
