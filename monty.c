@@ -17,7 +17,7 @@ int function_selector(char *opcode, stack_t **stk, unsigned int n)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"div", div},
+		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
