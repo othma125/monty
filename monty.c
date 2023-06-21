@@ -55,11 +55,11 @@ int monty(FILE *f)
 
 	if (create_stack(&stack) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
-	while (readLine(f, &line) > 0)
+	while (readLine(f, &line) > 0 && line[0] != '\n')
 	{
 		number++;
 		free_cndtn = 0;
-		if (line[0] == '#' || line[0] == '\n')
+		if (line[0] == '#')
 		{
 			free(line);
 			continue;
