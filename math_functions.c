@@ -5,7 +5,7 @@
  * @number: integer
  * Return: success
  */
-void add(stack_t **stack, unsigned int number)
+int add(stack_t **stack, unsigned int number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -24,7 +24,7 @@ void add(stack_t **stack, unsigned int number)
  * @line_number: integer
  * Return: success
  */
-void sub(stack_t **stack, unsigned int line_number)
+int sub(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -43,7 +43,7 @@ void sub(stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-void _div(stack_t **stack, unsigned int line_number)
+int _div(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -68,7 +68,7 @@ void _div(stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-void mul(stack_t **stack, unsigned int line_number)
+int mul(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -86,7 +86,7 @@ void mul(stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-void mod(stack_t **stack, unsigned int line_number)
+int mod(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
