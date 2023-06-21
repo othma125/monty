@@ -26,17 +26,16 @@ int _atoi(char *s)
 unsigned int readLine(FILE *file, char **line)
 {
 	unsigned int max_len = 128, len = 0;
-	char ch = getc(file);
+	char ch;
 
 	*line = malloc(max_len);
 	if (*line == NULL)
 		return (0);
-	while ((ch != '\n') && (ch != EOF) && len < max_len)
-	{
+	do {
+		ch = getc(file);
 		(*line)[len] = ch;
 		len++;
-		ch = getc(file);
-	}
+	} while (ch != '\n' && ch != EOF);
 	(*line)[len] = '\0';
 	return (len);
 }
