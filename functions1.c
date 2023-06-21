@@ -12,11 +12,13 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		success = 0;
 		return;
 	}
 	if (op_toks[1] == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		success = 0;
 		return;
 	}
 	new->n = atoi(op_toks[1]);
@@ -67,6 +69,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		success = 0;
 		return;
 	}
 	printf("%d\n", (*stack)->next->n);
@@ -84,6 +87,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		success = 0;
 		return;
 	}
 	nxt = (*stack)->next->next;
@@ -106,6 +110,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		success = 0;
 		return;
 	}
 	tmp = (*stack)->next->next;
