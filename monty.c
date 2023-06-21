@@ -58,7 +58,7 @@ int monty(FILE *f)
 	while (readLine(f, &line) > 0)
 	{
 		number++;
-		printf("%s\n", line);
+		/*printf("%s\n", line);*/
 		free_cndtn = 0;
 		if (line[0] == '#' || line[0] == '\n')
 		{
