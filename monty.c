@@ -59,7 +59,7 @@ int monty(FILE *f)
 	{
 		number++;
 		free_cndtn = 0;
-		if (line[0] == '#')
+		if (line[0] == '#' || line[0] == '\n')
 		{
 			free(line);
 			continue;
