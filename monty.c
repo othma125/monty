@@ -50,7 +50,7 @@ int monty(FILE *f)
 	unsigned int number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 0;
 	char *line = NULL;
 	stack_t *stack = NULL;
-	void (*func)(stack_t**, unsigned int);
+	int (*func)(stack_t**, unsigned int);
 
 	exit_stat = create_stack(&stack);
 	while (exit_stat && readLine(f, &line) > 0)
