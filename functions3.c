@@ -3,15 +3,15 @@
  * rotl - rotl
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
-void rotl(stack_t **stack, unsigned int line_number)
+int rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *bottom;
 
 	(void)line_number;
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-		return;
+		return (EXIT_FAILURE);
 	top = (*stack)->next;
 	bottom = (*stack)->next;
 	while (bottom->next != NULL)
@@ -21,20 +21,21 @@ void rotl(stack_t **stack, unsigned int line_number)
 	bottom->next = top;
 	top->next = NULL;
 	top->prev = bottom;
+	return (EXIT_SUCCESS);
 }
 /**
  * rotr - rotr
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
-void rotr(stack_t **stack, unsigned int line_number)
+int rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *bottom;
 
 	(void)line_number;
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-		return;
+		return (EXIT_FAILURE);
 	top = (*stack)->next;
 	bottom = (*stack)->next;
 	while (bottom->next != NULL)
@@ -44,4 +45,5 @@ void rotr(stack_t **stack, unsigned int line_number)
 	bottom->prev = *stack;
 	bottom->next = top;
 	top->prev = bottom;
+	return (EXIT_SUCCESS);
 }
