@@ -13,19 +13,21 @@ void nop(stack_t **stack, unsigned int line_number)
 /**
  * pchar - pchar
  * @stack: stack
- * @line_number: integer
+ * @number: integer
  * Return: none
  */
-void pchar(stack_t **stack, unsigned int line_number)
+void pchar(stack_t **stack, unsigned int number)
 {
 	if ((*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", number);
+		success = 0;
 		return;
 	}
 	if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
 	{
-		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", number);
+		success = 0;
 		return;
 	}
 	printf("%c\n", (*stack)->next->n);
@@ -51,12 +53,12 @@ void pstr(stack_t **stack, unsigned int line_number)
 /**
  * stack - stack
  * @stack: stack
- * @line_number: integer
+ * @number: integer
  * Return: none
  */
-void stack(stack_t **stack, unsigned int line_number)
+void stack(stack_t **stack, unsigned int number)
 {
-	(void)line_number;
+	(void)number;
 	(*stack)->n = STACK;
 }
 /**
