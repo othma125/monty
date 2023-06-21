@@ -1,15 +1,17 @@
 #include "monty.h"
 /**
  * rotl - rotl
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int rotl(stack_t **stack, unsigned int line_number)
+int rotl(char ** op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *bottom;
 
 	(void)line_number;
+	(void)op_toks;
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 		return (EXIT_SUCCESS);
 	top = (*stack)->next;
@@ -25,15 +27,17 @@ int rotl(stack_t **stack, unsigned int line_number)
 }
 /**
  * rotr - rotr
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int rotr(stack_t **stack, unsigned int line_number)
+int rotr(char ** op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *bottom;
 
 	(void)line_number;
+	(void)op_toks;
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 		return (EXIT_SUCCESS);
 	top = (*stack)->next;
