@@ -75,7 +75,7 @@ int monty(FILE *f)
 			continue;
 		}
 		func = function_selector(op_toks[0]);
-		if (op_func == NULL)
+		if (func == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				number, op_toks[0]);
