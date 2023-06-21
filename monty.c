@@ -52,11 +52,7 @@ int monty(FILE *f)
 	stack_t *stack = NULL;
 	void (*func)(stack_t**, unsigned int);
 
-	if (create_stack(&stack) == 0)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		return (EXIT_FAILURE);
-	}
+	create_stack(&stack);
 	while (success && readLine(f, &line) > 0)
 	{
 		number++;
