@@ -57,19 +57,17 @@ int monty(FILE *f)
 		return (EXIT_FAILURE);
 	while (readLine(f, &line) > 0)
 	{
-		number++;
-		free_cndtn = 0;
+		number++, free_cndtn = 0;
 		if (line[0] == '#' || line[0] == '\n')
-		{
-			free(line);
-			continue;
-		}
+			free(line), continue;
 		op_toks = _strtok(line);
 		if (args_count(op_toks) == 0)
 		{
 			free_tokens(op_toks, line, free_cndtn);
 			continue;
 		}
+		if (op_toks[0][0] == '#')
+			free_tokens(op_toks, line, free_cndtn), continue;
 		func = function_selector(op_toks[0]);
 		if (func == NULL)
 		{
@@ -79,10 +77,7 @@ int monty(FILE *f)
 			break;
 		}
 		if (func(op_toks, &stack, number) == EXIT_FAILURE)
-		{
-			exit_stat = EXIT_FAILURE;
-			break;
-		}
+			exit_stat = EXIT_FAILURE, break;
 		free(line), _free(op_toks), free_cndtn = 1;
 	}
 	free_tokens(op_toks, line, free_cndtn), free_stack(&stack);
