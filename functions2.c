@@ -6,7 +6,7 @@
  * @line_number: integer
  * Return: success
  */
-int nop(char ** op_toks, stack_t **stack, unsigned int line_number)
+int nop(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
@@ -20,7 +20,7 @@ int nop(char ** op_toks, stack_t **stack, unsigned int line_number)
  * @number: integer
  * Return: success
  */
-int pchar(char ** op_toks, stack_t **stack, unsigned int number)
+int pchar(char **op_toks, stack_t **stack, unsigned int number)
 {
 	(void)op_toks;
 	if ((*stack)->next == NULL)
@@ -43,7 +43,7 @@ int pchar(char ** op_toks, stack_t **stack, unsigned int number)
  * @line_number: integer
  * Return: success
  */
-int pstr(char ** op_toks, stack_t **stack, unsigned int line_number)
+int pstr(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack)->next;
 
@@ -64,7 +64,7 @@ int pstr(char ** op_toks, stack_t **stack, unsigned int line_number)
  * @number: integer
  * Return: success
  */
-int stack(char ** op_toks, stack_t **stack, unsigned int number)
+int stack(char **op_toks, stack_t **stack, unsigned int number)
 {
 	(void)number;
 	(void)op_toks;
@@ -78,7 +78,7 @@ int stack(char ** op_toks, stack_t **stack, unsigned int number)
  * @line_number: integer
  * Return: success
  */
-int queue(char ** op_toks, stack_t **stack, unsigned int line_number)
+int queue(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 	(void)op_toks;
