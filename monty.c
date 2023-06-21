@@ -55,7 +55,7 @@ int monty(FILE *f)
 
 	if (create_stack(&stack) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
-	while (readLine(f, &line) > 0 && line[0] != '\n')
+	while (readLine(f, &line) > 0)
 	{
 		number++;
 		printf("%s\n", line);
