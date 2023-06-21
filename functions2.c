@@ -3,42 +3,42 @@
  * nop - nop
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
-void nop(stack_t **stack, unsigned int line_number)
+int nop(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
+	return (EXIT_SUCCESS);
 }
 /**
  * pchar - pchar
  * @stack: stack
  * @number: integer
- * Return: none
+ * Return: success
  */
-void pchar(stack_t **stack, unsigned int number)
+int pchar(stack_t **stack, unsigned int number)
 {
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", number);
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", number);
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	printf("%c\n", (*stack)->next->n);
+	return (EXIT_SUCCESS);
 }
 /**
  * pstr - pstr
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
-void pstr(stack_t **stack, unsigned int line_number)
+int pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack)->next;
 
@@ -49,26 +49,29 @@ void pstr(stack_t **stack, unsigned int line_number)
 		tmp = tmp->next;
 	}
 	printf("\n");
+	return (EXIT_SUCCESS);
 }
 /**
  * stack - stack
  * @stack: stack
  * @number: integer
- * Return: none
+ * Return: success
  */
-void stack(stack_t **stack, unsigned int number)
+int stack(stack_t **stack, unsigned int number)
 {
 	(void)number;
 	(*stack)->n = STACK;
+	return (EXIT_SUCCESS);
 }
 /**
  * queue - change stack to queue
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
-void queue(stack_t **stack, unsigned int line_number)
+int queue(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 	(*stack)->n = QUEUE;
+	return (EXIT_SUCCESS);
 }
