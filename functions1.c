@@ -15,7 +15,7 @@ int push(char **op_toks, stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		return (EXIT_FAILURE);
 	}
-	if (args_count(op_toks) < 2)
+	if (args_count(op_toks) < 2 || _atoi(op_toks[1]) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		return (EXIT_FAILURE);
