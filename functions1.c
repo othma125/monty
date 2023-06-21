@@ -1,11 +1,12 @@
 #include "monty.h"
 /**
  * push - monty push
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int push(stack_t **stack, unsigned int line_number)
+int push(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *new = malloc(sizeof(stack_t));
 
@@ -42,15 +43,17 @@ int push(stack_t **stack, unsigned int line_number)
 }
 /**
  * pall - monty pall
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int pall(stack_t **stack, unsigned int line_number)
+int pall(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack)->next;
 
 	(void)line_number;
+	(void)op_toks;
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);
@@ -60,12 +63,14 @@ int pall(stack_t **stack, unsigned int line_number)
 }
 /**
  * pint - monty pint
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int pint(stack_t **stack, unsigned int line_number)
+int pint(char **op_toks, stack_t **stack, unsigned int line_number)
 {
+	(void)op_toks;
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
@@ -76,14 +81,16 @@ int pint(stack_t **stack, unsigned int line_number)
 }
 /**
  * pop - monty pop
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int pop(stack_t **stack, unsigned int line_number)
+int pop(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *nxt = NULL;
 
+	(void)op_toks;
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
@@ -99,14 +106,16 @@ int pop(stack_t **stack, unsigned int line_number)
 
 /**
  * swap - monty swap
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int swap(stack_t **stack, unsigned int line_number)
+int swap(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
+	(void)op_toks;
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
