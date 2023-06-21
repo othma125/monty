@@ -1,4 +1,28 @@
 #include "monty.h"
+
+/**
+ * readLine - check code
+ * @file: input stream
+ * @line: string to read
+ * Return: string length
+ */
+unsigned int readLine(FILE *file, char **line)
+{
+	unsigned int max_len = 128, len = 0;
+	char ch = getc(file);
+
+	*line = malloc(max_len);
+	if (*line == NULL)
+		return (0);
+	while ((ch != '\n') && (ch != EOF))
+	{
+		(*line)[len] = ch;
+		len++;
+		ch = getc(file);
+	}
+	(*line)[len] = '\0';
+	return (len);
+}
 /**
  * function_selector - select the right function in term of opcode
  * @opcode: The opcode to match.
@@ -70,14 +94,13 @@ int monty(FILE *f)
 	char *line = NULL;
 	stack_t *stack = NULL;
 	int exit_stat = EXIT_SUCCESS;
-	size_t len;
 
 	if (create_stack(&stack) == 0)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		return (EXIT_FAILURE);
 	}
-	while (success && getline(&line, &len, f) != -1)
+	while (success && readLine(f, &line) > 0)
 	{
 		number++;
 		printf("%s\n", line);
