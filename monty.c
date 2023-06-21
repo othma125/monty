@@ -52,8 +52,8 @@ int monty(FILE *f)
 	stack_t *stack = NULL;
 	void (*func)(stack_t**, unsigned int);
 
-	create_stack(&stack);
-	while (success && readLine(f, &line) > 0)
+	exit_stat = create_stack(&stack);
+	while (exit_stat && readLine(f, &line) > 0)
 	{
 		number++;
 		free_cndtn = 0;
