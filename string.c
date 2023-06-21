@@ -5,7 +5,7 @@
  * Return: success
  */
 int _atoi(char *s)
-{	
+{
 	int i;
 
 	for (i = 0; s[i]; i++)
