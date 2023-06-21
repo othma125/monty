@@ -60,7 +60,7 @@ int monty(FILE *f)
 		number++;
 		printf("%s\n", line);
 		free_cndtn = 0;
-		if (line[0] == '#')
+		if (line[0] == '#' || line[0] == '\n')
 		{
 			free(line);
 			continue;
