@@ -48,3 +48,25 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+/**
+ * stack - stack
+ * @stack: stack
+ * @line_number: integer
+ * Return: none
+ */
+void stack(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	(*stack)->n = STACK;
+}
+/**
+ * queue - change stack to queue
+ * @stack: stack
+ * @line_number: integer
+ * Return: none
+ */
+void queue(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	(*stack)->n = QUEUE;
+}
