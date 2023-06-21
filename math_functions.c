@@ -1,11 +1,12 @@
 #include "monty.h"
 /**
  * add - add
+ * @op_toks: tokens 
  * @stack: stack
  * @number: integer
  * Return: success
  */
-int add(stack_t **stack, unsigned int number)
+int add(char ** op_toks, stack_t **stack, unsigned int number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -14,17 +15,17 @@ int add(stack_t **stack, unsigned int number)
 	}
 
 	(*stack)->next->next->n += (*stack)->next->n;
-	pop(stack, number);
-	return (EXIT_SUCCESS);
+	return (pop(op_toks, stack, line_number));
 }
 
 /**
  * sub - sub
+ * @op_toks: tokens 
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int sub(stack_t **stack, unsigned int line_number)
+int sub(char ** op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -33,17 +34,17 @@ int sub(stack_t **stack, unsigned int line_number)
 	}
 
 	(*stack)->next->next->n -= (*stack)->next->n;
-	pop(stack, line_number);
-	return (EXIT_SUCCESS);
+	return (pop(op_toks, stack, line_number));
 }
 
 /**
  * _div - div
+ * @op_toks: tokens 
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int _div(stack_t **stack, unsigned int line_number)
+int _div(char ** op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -58,17 +59,17 @@ int _div(stack_t **stack, unsigned int line_number)
 	}
 
 	(*stack)->next->next->n /= (*stack)->next->n;
-	pop(stack, line_number);
-	return (EXIT_SUCCESS);
+	return (pop(op_toks, stack, line_number));
 }
 
 /**
  * mul - mul
+ * @op_toks: tokens 
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int mul(stack_t **stack, unsigned int line_number)
+int mul(char ** op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -77,16 +78,16 @@ int mul(stack_t **stack, unsigned int line_number)
 	}
 
 	(*stack)->next->next->n *= (*stack)->next->n;
-	pop(stack, line_number);
-	return (EXIT_SUCCESS);
+	return (pop(op_toks, stack, line_number));
 }
 /**
  * mod - modulo
+ * @op_toks: tokens 
  * @stack: stack
  * @line_number: integer
  * Return: success
  */
-int mod(stack_t **stack, unsigned int line_number)
+int mod(char ** op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -99,6 +100,5 @@ int mod(stack_t **stack, unsigned int line_number)
 		return (EXIT_FAILURE);
 	}
 	(*stack)->next->next->n %= (*stack)->next->n;
-	pop(stack, line_number);
-	return (EXIT_SUCCESS);
+	return (pop(op_toks, stack, line_number));
 }
