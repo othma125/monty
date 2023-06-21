@@ -43,7 +43,7 @@ typedef struct instruction_s
 int monty(FILE *);
 char **_strtok(char *);
 void free_stack(stack_t **);
-void create_stack(stack_t **);
+int create_stack(stack_t **);
 void _free(char **);
 unsigned int readLine(FILE *, char **);
 int (*function_selector(char *))(stack_t**, unsigned int);
