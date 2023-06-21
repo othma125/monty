@@ -11,7 +11,7 @@ int rotl(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	top = (*stack)->next;
 	bottom = (*stack)->next;
 	while (bottom->next != NULL)
@@ -35,7 +35,7 @@ int rotr(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	top = (*stack)->next;
 	bottom = (*stack)->next;
 	while (bottom->next != NULL)
