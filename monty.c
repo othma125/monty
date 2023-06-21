@@ -79,7 +79,7 @@ int monty(FILE *f)
 		func(&stack, number);
 		free(line);
 		_free(op_toks);
-		free_condition = 1;
+		free_cndtn = 1;
 	}
 	free_tokens(line, free_cndtn);
 	if (stack != NULL);
