@@ -7,7 +7,7 @@
  * @free_condition: condition
  * Return: none
  */
-void free_tokens(char ** op_toks, char *line, int free_condition)
+void free_tokens(char **op_toks, char *line, int free_condition)
 {
 	if (free_condition == 0)
 	{
