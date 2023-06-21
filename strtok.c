@@ -1,5 +1,23 @@
 #include "monty.h"
 /**
+ * _atoi - atoi
+ * @s: string
+ * Return: success
+ */
+int _atoi(char *s)
+{	
+	int i;
+
+	for (i = 0; s[i]; i++)
+	{
+		if (s[i] == '-' && i == 0)
+			continue;
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+	}
+	return (1);
+}
+/**
  * readLine - check code
  * @file: input stream
  * @line: string to read
