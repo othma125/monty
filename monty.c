@@ -58,7 +58,6 @@ int monty(FILE *f)
 	while (readLine(f, &line) > 0)
 	{
 		number++;
-		/*printf("%s\n", line);*/
 		free_cndtn = 0;
 		if (line[0] == '#' || line[0] == '\n')
 		{
@@ -66,8 +65,6 @@ int monty(FILE *f)
 			continue;
 		}
 		op_toks = _strtok(line);
-		/*for (i=0;op_toks[i];i++)
-		  printf("%s\n", op_toks[i]);*/
 		if (args_count(op_toks) == 0)
 		{
 			free_tokens(op_toks, line, free_cndtn);
@@ -78,6 +75,7 @@ int monty(FILE *f)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				number, op_toks[0]);
+			printf("%ld\n", strlen(line));
 			break;
 		}
 		if (func(op_toks, &stack, number) == EXIT_FAILURE)
@@ -85,11 +83,8 @@ int monty(FILE *f)
 			exit_stat = EXIT_FAILURE;
 			break;
 		}
-		free(line);
-		_free(op_toks);
-		free_cndtn = 1;
+		free(line), _free(op_toks), free_cndtn = 1;
 	}
-	free_tokens(op_toks, line, free_cndtn);
-	free_stack(&stack);
+	free_tokens(op_toks, line, free_cndtn), free_stack(&stack);
 	return (exit_stat);
 }
