@@ -2,11 +2,12 @@
 
 /**
  * free_tokens - frees
- * @line: strng
+ * @op_toks: tokens
+ * @line: string
  * @free_condition: condition
  * Return: none
  */
-void free_tokens(char *line, int free_condition)
+void free_tokens(char ** op_toks, char *line, int free_condition)
 {
 	if (free_condition == 0)
 	{
@@ -48,16 +49,15 @@ unsigned int args_count(char **args)
 int monty(FILE *f)
 {
 	unsigned int number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 0;
-	char *line = NULL;
+	char *line = NULL, **op_toks = NULL;
 	stack_t *stack = NULL;
-	int (*func)(stack_t**, unsigned int);
+	int (*func)(char **, stack_t**, unsigned int);
 
 	exit_stat = create_stack(&stack);
 	while (exit_stat && readLine(f, &line) > 0)
 	{
 		number++;
 		free_cndtn = 0;
-		/*printf("%s\n", line);*/
 		if (line[0] == '#')
 		{
 			free(line);
@@ -76,7 +76,7 @@ int monty(FILE *f)
 				number, op_toks[0]);
 			break;
 		}
-		func(&stack, number);
+		func(op_toks, &stack, number);
 		free(line);
 		_free(op_toks);
 		free_cndtn = 1;
