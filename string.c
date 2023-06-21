@@ -35,7 +35,7 @@ unsigned int readLine(FILE *file, char **line)
 		ch = getc(file);
 		(*line)[len] = ch;
 		len++;
-	} while (ch != '\n' && ch != EOF);
+	} while (ch != '\n');
 	(*line)[len] = '\0';
 	return (len);
 }

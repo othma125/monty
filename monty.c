@@ -48,7 +48,7 @@ unsigned int args_count(char **args)
  */
 int monty(FILE *f)
 {
-	unsigned int i, number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 0;
+	unsigned int number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 0;
 	char *line = NULL, **op_toks = NULL;
 	stack_t *stack = NULL;
 	int (*func)(char **, stack_t**, unsigned int);
@@ -66,8 +66,8 @@ int monty(FILE *f)
 			continue;
 		}
 		op_toks = _strtok(line);
-		for (i=0;op_toks[i];i++)
-			printf("%s\n", op_toks[i]);
+		/*for (i=0;op_toks[i];i++)
+		  printf("%s\n", op_toks[i]);*/
 		if (args_count(op_toks) == 0)
 		{
 			free_tokens(op_toks, line, free_cndtn);
