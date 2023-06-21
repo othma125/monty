@@ -17,7 +17,7 @@ int push(char **op_toks, stack_t **stack, unsigned int line_number)
 	}
 	if (args_count(op_toks) != 2)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_toks[0]);
 		return (EXIT_FAILURE);
 	}
 	new->n = atoi(op_toks[1]);
