@@ -9,7 +9,6 @@
 #define STACK 0
 #define QUEUE 1
 #define DELIMS " \n\t\a\b"
-extern char **op_toks;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,7 +37,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	int (*f)(stack_t **stack, unsigned int line_number);
+	int (*f)(char **op_toks, stack_t **stack, unsigned int line_number);
 } instruction_t;
 int monty(FILE *);
 char **_strtok(char *);
@@ -46,23 +45,23 @@ void free_stack(stack_t **);
 int create_stack(stack_t **);
 void _free(char **);
 unsigned int readLine(FILE *, char **);
-int (*function_selector(char *))(stack_t**, unsigned int);
+int (*function_selector(char *))(char **, stack_t**, unsigned int);
 /*opcode functions*/
-int push(stack_t **, unsigned int);
-int pall(stack_t **, unsigned int);
-int pint(stack_t **, unsigned int);
-int pop(stack_t **, unsigned int);
-int swap(stack_t **, unsigned int);
-int add(stack_t **, unsigned int);
-int nop(stack_t **, unsigned int);
-int sub(stack_t **, unsigned int);
-int _div(stack_t **, unsigned int);
-int mul(stack_t **, unsigned int);
-int mod(stack_t **, unsigned int);
-int pchar(stack_t **, unsigned int);
-int pstr(stack_t **, unsigned int);
-int rotl(stack_t **, unsigned int);
-int rotr(stack_t **, unsigned int);
-int stack(stack_t **, unsigned int);
-int queue(stack_t **, unsigned int);
+int push(char **, stack_t **, unsigned int);
+int pall(char **, stack_t **, unsigned int);
+int pint(char **, stack_t **, unsigned int);
+int pop(char **, stack_t **, unsigned int);
+int swap(char **, stack_t **, unsigned int);
+int add(char **, stack_t **, unsigned int);
+int nop(char **, stack_t **, unsigned int);
+int sub(char **, stack_t **, unsigned int);
+int _div(char **, stack_t **, unsigned int);
+int mul(char **, stack_t **, unsigned int);
+int mod(char **, stack_t **, unsigned int);
+int pchar(char **, stack_t **, unsigned int);
+int pstr(char **, stack_t **, unsigned int);
+int rotl(char **, stack_t **, unsigned int);
+int rotr(char **, stack_t **, unsigned int);
+int stack(char **, stack_t **, unsigned int);
+int queue(char **, stack_t **, unsigned int);
 #endif
