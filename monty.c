@@ -80,6 +80,7 @@ int monty(FILE *f)
 	while (success && getline(&line, &len, f) != -1)
 	{
 		number++;
+		printf("%s\n", line);
 		if (line[0] == '#')
 		{
 			free(line);
