@@ -46,6 +46,7 @@ char **_strtok(char *);
 void free_stack(stack_t **);
 int create_stack(stack_t **);
 void _free(char **);
+unsigned int readLine(FILE *, char **);
 /*opcode functions*/
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
