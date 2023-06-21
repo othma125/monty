@@ -6,7 +6,6 @@
  * Return: success or failure
  */
 
-char **op_toks = NULL;
 int main(int argc, char **argv)
 {
 	FILE *monty_file = NULL;
