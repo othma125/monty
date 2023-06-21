@@ -49,7 +49,7 @@ int pstr(char **op_toks, stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	(void)op_toks;
-	while (tmp && tmp->n > 0 && tmp->n <=127)
+	while (tmp && tmp->n > 0 && tmp->n <= 127)
 	{
 		printf("%c", (char)tmp->n);
 		tmp = tmp->next;
