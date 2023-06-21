@@ -1,29 +1,6 @@
 #include "monty.h"
 
 /**
- * readLine - check code
- * @file: input stream
- * @line: string to read
- * Return: string length
- */
-unsigned int readLine(FILE *file, char **line)
-{
-	unsigned int max_len = 128, len = 0;
-	char ch = getc(file);
-
-	*line = malloc(max_len);
-	if (*line == NULL)
-		return (0);
-	while ((ch != '\n') && (ch != EOF))
-	{
-		(*line)[len] = ch;
-		len++;
-		ch = getc(file);
-	}
-	(*line)[len] = '\0';
-	return (len);
-}
-/**
  * function_selector - select the right function in term of opcode
  * @opcode: The opcode to match.
  * Return: function pointer
