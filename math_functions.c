@@ -6,7 +6,7 @@
  * @number: integer
  * Return: success
  */
-int add(char ** op_toks, stack_t **stack, unsigned int number)
+int add(char **op_toks, stack_t **stack, unsigned int number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -25,7 +25,7 @@ int add(char ** op_toks, stack_t **stack, unsigned int number)
  * @line_number: integer
  * Return: success
  */
-int sub(char ** op_toks, stack_t **stack, unsigned int line_number)
+int sub(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -44,7 +44,7 @@ int sub(char ** op_toks, stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-int _div(char ** op_toks, stack_t **stack, unsigned int line_number)
+int _div(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -69,7 +69,7 @@ int _div(char ** op_toks, stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-int mul(char ** op_toks, stack_t **stack, unsigned int line_number)
+int mul(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -87,7 +87,7 @@ int mul(char ** op_toks, stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-int mod(char ** op_toks, stack_t **stack, unsigned int line_number)
+int mod(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
