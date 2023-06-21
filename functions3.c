@@ -6,7 +6,7 @@
  * @line_number: integer
  * Return: success
  */
-int rotl(char ** op_toks, stack_t **stack, unsigned int line_number)
+int rotl(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *bottom;
 
@@ -32,7 +32,7 @@ int rotl(char ** op_toks, stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-int rotr(char ** op_toks, stack_t **stack, unsigned int line_number)
+int rotr(char **op_toks, stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *bottom;
 
