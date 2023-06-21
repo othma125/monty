@@ -3,23 +3,21 @@
  * push - monty push
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
-void push(stack_t **stack, unsigned int line_number)
+int push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	if (op_toks[1] == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	new->n = atoi(op_toks[1]);
 	if ((*stack)->n == STACK)
@@ -40,12 +38,13 @@ void push(stack_t **stack, unsigned int line_number)
 		new->next = NULL;
 		tmp->next = new;
 	}
+	return (EXIT_SUCCESS);
 }
 /**
  * pall - monty pall
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
@@ -57,28 +56,29 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
+	return (EXIT_SUCCESS);
 }
 /**
  * pint - monty pint
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->next->n);
+	return (EXIT_SUCCESS);
 }
 /**
  * pop - monty pop
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
@@ -87,21 +87,21 @@ void pop(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	nxt = (*stack)->next->next;
 	free((*stack)->next);
 	if (nxt)
 		nxt->prev = *stack;
 	(*stack)->next = nxt;
+	return (EXIT_SUCCESS);
 }
 
 /**
  * swap - monty swap
  * @stack: stack
  * @line_number: integer
- * Return: none
+ * Return: success
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
@@ -110,8 +110,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	tmp = (*stack)->next->next;
 	(*stack)->next->next = tmp->next;
@@ -121,4 +120,5 @@ void swap(stack_t **stack, unsigned int line_number)
 	tmp->next = (*stack)->next;
 	tmp->prev = *stack;
 	(*stack)->next = tmp;
+	return (EXIT_SUCCESS);
 }
