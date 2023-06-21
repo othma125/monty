@@ -33,7 +33,6 @@ unsigned int readLine(FILE *file, char **line)
 		return (0);
 	while (ch != '\n' && ch != EOF && ch != '#')
 	{
-		if
 		(*line)[len] = ch;
 		len++;
 		ch = getc(file);
