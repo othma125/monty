@@ -46,7 +46,7 @@ int push(stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-void pall(stack_t **stack, unsigned int line_number)
+int pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack)->next;
 
@@ -64,7 +64,7 @@ void pall(stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-void pint(stack_t **stack, unsigned int line_number)
+int pint(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL)
 	{
@@ -80,7 +80,7 @@ void pint(stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-void pop(stack_t **stack, unsigned int line_number)
+int pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *nxt = NULL;
 
@@ -103,7 +103,7 @@ void pop(stack_t **stack, unsigned int line_number)
  * @line_number: integer
  * Return: success
  */
-void swap(stack_t **stack, unsigned int line_number)
+int swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
