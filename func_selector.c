@@ -5,7 +5,7 @@
  * @opcode: The opcode to match.
  * Return: function pointer
  */
-void (*function_selector(char *opcode))(stack_t**, unsigned int)
+int (*function_selector(char *opcode))(stack_t**, unsigned int)
 {
 	instruction_t functions[] = {
 		{"push", push},
