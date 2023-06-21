@@ -93,24 +93,47 @@ int monty(FILE *f)
 	unsigned int number = 0;
 	char *line = NULL;
 	stack_t *stack = NULL;
-	int exit_stat = EXIT_SUCCESS;
+	int exit_stat = EXIT_SUCCESS, free;
+	void (*op_func)(stack_t**, unsigned int);
 
 	if (create_stack(&stack) == 0)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		return (EXIT_FAILURE);
 	}
-	while (success && readLine(f, &line) > 0)
+	while (success && readLine(f, &line) >= 0)
 	{
 		number++;
+		free = 0;
 		printf("%s\n", line);
 		if (line[0] == '#')
 		{
 			free(line);
 			continue;
 		}
+		op_toks = _strtok(line);
+		if (args_count(op_toks) == 0)
+		{
+			free(line);
+			_free(op_toks);
+			continue;
+		}
+		op_func = function_selector(op_toks[0]);
+		if (op_func == NULL)
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n",
+				line_number, op_toks[0]);
+			break;
+		}
+		free(line);
+		_free(op_toks);
+		free = 1;
 	}
-	free(line);
+	if (free == 0)
+	{
+		free(line);
+		_free(op_toks);
+	}
 	free_stack(&stack);
 	return (exit_stat);
 }
