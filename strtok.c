@@ -13,7 +13,7 @@ unsigned int readLine(FILE *file, char **line)
 	*line = malloc(max_len);
 	if (*line == NULL)
 		return (0);
-	while ((ch != '\n') && (ch != EOF))
+	while ((ch != '\n') && (ch != EOF) && len < max_len)
 	{
 		(*line)[len] = ch;
 		len++;
