@@ -2,12 +2,11 @@
 
 /**
  * free_tokens - frees
- * @tokens: operation tokens
  * @line: strng
  * @free_condition: condition
  * Return: none
  */
-void free_tokens(char **op_toks, char *line, int free_condition)
+void free_tokens(char *line, int free_condition)
 {
 	if (free_condition == 0)
 	{
@@ -52,7 +51,7 @@ int monty(FILE *f)
 	char *line = NULL;
 	stack_t *stack = NULL;
 	int exit_stat = EXIT_SUCCESS, free_condition;
-	void (*op_func)(stack_t**, unsigned int);
+	void (*func)(stack_t**, unsigned int);
 
 	if (create_stack(&stack) == 0)
 	{
@@ -72,21 +71,22 @@ int monty(FILE *f)
 		op_toks = _strtok(line);
 		if (args_count(op_toks) == 0)
 		{
-			free_tokens(op_toks, line, free_condition);
+			free_tokens(line, free_condition);
 			continue;
 		}
-		op_func = function_selector(op_toks[0]);
+		func = function_selector(op_toks[0]);
 		if (op_func == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				number, op_toks[0]);
 			break;
 		}
+		func(&stack, number);
 		free(line);
 		_free(op_toks);
 		free_condition = 1;
 	}
-	free_tokens(op_toks, line, free_condition);
+	free_tokens(line, free_condition);
 	free_stack(&stack);
 	return (exit_stat);
 }
