@@ -7,7 +7,7 @@
  * @free_condition: condition
  * Return: none
  */
-void free_tokens(char **tokens, char *line, int free_condition)
+void free_tokens(char **op_toks, char *line, int free_condition)
 {
 	if (free_condition == 0)
 	{
@@ -72,7 +72,7 @@ int monty(FILE *f)
 		op_toks = _strtok(line);
 		if (args_count(op_toks) == 0)
 		{
-			free_tokens(tokens, line, free_condition);
+			free_tokens(op_toks, line, free_condition);
 			continue;
 		}
 		op_func = function_selector(op_toks[0]);
@@ -86,7 +86,7 @@ int monty(FILE *f)
 		_free(op_toks);
 		free_condition = 1;
 	}
-	free_tokens(tokens, line, free_condition);
+	free_tokens(op_toks, line, free_condition);
 	free_stack(&stack);
 	return (exit_stat);
 }
