@@ -40,6 +40,7 @@ typedef struct instruction_s
 	int (*f)(char **op_toks, stack_t **stack, unsigned int line_number);
 } instruction_t;
 int monty(FILE *);
+int _atoi(char *s);
 unsigned int args_count(char **);
 char **_strtok(char *);
 void free_stack(stack_t **);
