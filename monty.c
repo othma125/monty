@@ -66,7 +66,7 @@ int monty(FILE *f)
 		op_toks = _strtok(line);
 		if (args_count(op_toks) == 0)
 		{
-			free_tokens(line, free_cndtn);
+			free_tokens(op_toks, line, free_cndtn);
 			continue;
 		}
 		func = function_selector(op_toks[0]);
@@ -81,7 +81,7 @@ int monty(FILE *f)
 		_free(op_toks);
 		free_cndtn = 1;
 	}
-	free_tokens(line, free_cndtn);
+	free_tokens(op_toks, line, free_cndtn);
 	if (stack != NULL)
 		free_stack(&stack);
 	return (exit_stat);
