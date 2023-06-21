@@ -34,7 +34,7 @@ void _free(char **tokens)
  * @args: arguments
  * Return: argc
  */
-int args_count(char **args)
+unsigned int args_count(char **args)
 {
 	if (args == NULL || *args == NULL)
 		return (0);
@@ -47,10 +47,9 @@ int args_count(char **args)
  */
 int monty(FILE *f)
 {
-	unsigned int number = 0;
+	unsigned int number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 0;
 	char *line = NULL;
 	stack_t *stack = NULL;
-	int exit_stat = EXIT_SUCCESS, free_condition;
 	void (*func)(stack_t**, unsigned int);
 
 	if (create_stack(&stack) == 0)
@@ -61,7 +60,7 @@ int monty(FILE *f)
 	while (success && readLine(f, &line) > 0)
 	{
 		number++;
-		free_condition = 0;
+		free_cndtn = 0;
 		/*printf("%s\n", line);*/
 		if (line[0] == '#')
 		{
@@ -71,7 +70,7 @@ int monty(FILE *f)
 		op_toks = _strtok(line);
 		if (args_count(op_toks) == 0)
 		{
-			free_tokens(line, free_condition);
+			free_tokens(line, free_cndtn);
 			continue;
 		}
 		func = function_selector(op_toks[0]);
@@ -86,7 +85,8 @@ int monty(FILE *f)
 		_free(op_toks);
 		free_condition = 1;
 	}
-	free_tokens(line, free_condition);
-	free_stack(&stack);
+	free_tokens(line, free_cndtn);
+	if (stack != NULL);
+		free_stack(&stack);
 	return (exit_stat);
 }
