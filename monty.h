@@ -10,7 +10,6 @@
 #define QUEUE 1
 #define DELIMS " \n\t\a\b"
 extern char **op_toks;
-extern int success;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,7 +38,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	int (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 int monty(FILE *);
 char **_strtok(char *);
@@ -47,26 +46,23 @@ void free_stack(stack_t **);
 void create_stack(stack_t **);
 void _free(char **);
 unsigned int readLine(FILE *, char **);
-void (*function_selector(char *))(stack_t**, unsigned int);
+int (*function_selector(char *))(stack_t**, unsigned int);
 /*opcode functions*/
-void push(stack_t **, unsigned int);
-void pall(stack_t **, unsigned int);
-void pint(stack_t **, unsigned int);
-void pop(stack_t **, unsigned int);
-void swap(stack_t **, unsigned int);
-void add(stack_t **, unsigned int);
-void nop(stack_t **, unsigned int);
-void sub(stack_t **, unsigned int);
-void _div(stack_t **, unsigned int);
-void mul(stack_t **, unsigned int);
-void mod(stack_t **, unsigned int);
-void pchar(stack_t **, unsigned int);
-void pstr(stack_t **, unsigned int);
-void rotl(stack_t **, unsigned int);
-void rotr(stack_t **, unsigned int);
-void stack(stack_t **, unsigned int);
-void queue(stack_t **, unsigned int);
-
-
-
+int push(stack_t **, unsigned int);
+int pall(stack_t **, unsigned int);
+int pint(stack_t **, unsigned int);
+int pop(stack_t **, unsigned int);
+int swap(stack_t **, unsigned int);
+int add(stack_t **, unsigned int);
+int nop(stack_t **, unsigned int);
+int sub(stack_t **, unsigned int);
+int _div(stack_t **, unsigned int);
+int mul(stack_t **, unsigned int);
+int mod(stack_t **, unsigned int);
+int pchar(stack_t **, unsigned int);
+int pstr(stack_t **, unsigned int);
+int rotl(stack_t **, unsigned int);
+int rotr(stack_t **, unsigned int);
+int stack(stack_t **, unsigned int);
+int queue(stack_t **, unsigned int);
 #endif
