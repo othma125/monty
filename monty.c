@@ -41,7 +41,7 @@ void (*function_selector(char *opcode))(stack_t**, unsigned int)
  * @free_condition: condition
  * Return: none
  */
-void free_tokens(char **tokens, char * line, int free_condition)
+void free_tokens(char **tokens, char *line, int free_condition)
 {
 	if (free_condition == 0)
 	{
