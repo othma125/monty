@@ -1,7 +1,7 @@
 #include "monty.h"
 /**
  * add - add
- * @op_toks: tokens 
+ * @op_toks: tokens
  * @stack: stack
  * @number: integer
  * Return: success
@@ -20,7 +20,7 @@ int add(char **op_toks, stack_t **stack, unsigned int number)
 
 /**
  * sub - sub
- * @op_toks: tokens 
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
@@ -39,7 +39,7 @@ int sub(char **op_toks, stack_t **stack, unsigned int line_number)
 
 /**
  * _div - div
- * @op_toks: tokens 
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
@@ -64,7 +64,7 @@ int _div(char **op_toks, stack_t **stack, unsigned int line_number)
 
 /**
  * mul - mul
- * @op_toks: tokens 
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
@@ -82,7 +82,7 @@ int mul(char **op_toks, stack_t **stack, unsigned int line_number)
 }
 /**
  * mod - modulo
- * @op_toks: tokens 
+ * @op_toks: tokens
  * @stack: stack
  * @line_number: integer
  * Return: success
