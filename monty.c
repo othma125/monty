@@ -77,13 +77,16 @@ int monty(FILE *f)
 				number, op_toks[0]);
 			break;
 		}
-		func(op_toks, &stack, number);
+		if (func(op_toks, &stack, number) == EXIT_FAILURE)
+		{
+			exit_stat = EXIT_FAILURE;
+			break;
+		}
 		free(line);
 		_free(op_toks);
 		free_cndtn = 1;
 	}
 	free_tokens(op_toks, line, free_cndtn);
-	if (stack != NULL)
-		free_stack(&stack);
+	free_stack(&stack);
 	return (exit_stat);
 }
