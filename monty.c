@@ -82,7 +82,7 @@ int monty(FILE *f)
 		free_cndtn = 1;
 	}
 	free_tokens(line, free_cndtn);
-	if (stack != NULL);
+	if (stack != NULL)
 		free_stack(&stack);
 	return (exit_stat);
 }
