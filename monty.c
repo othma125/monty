@@ -67,7 +67,7 @@ int args_count(char **args)
 int monty(FILE *f)
 {
 	unsigned int number = 0;
-	char *line = NULL, **tokens;
+	char *line = NULL;
 	stack_t *stack = NULL;
 	int exit_stat = EXIT_SUCCESS;
 	size_t len;
@@ -77,7 +77,7 @@ int monty(FILE *f)
 		fprintf(stderr, "Error: malloc failed\n");
 		return (EXIT_FAILURE);
 	}
-	while (getline(&line, &len, f))
+	while (success && getline(&line, &len, f) != -1)
 	{
 		number++;
 		if (line[0] == '#')
