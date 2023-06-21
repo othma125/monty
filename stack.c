@@ -21,7 +21,7 @@ void free_stack(stack_t **stack)
  * @stack: stack
  * Return: none
  */
-void create_stack(stack_t **stack)
+int create_stack(stack_t **stack)
 {
 	stack_t *node;
 
@@ -29,11 +29,11 @@ void create_stack(stack_t **stack)
 	if (node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		success = 0;
-		return;
+		return (EXIT_FAILURE);
 	}
 	node->n = STACK;
 	node->prev = NULL;
 	node->next = NULL;
 	*stack = node;
+	return (EXIT_SUCCESS);
 }
