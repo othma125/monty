@@ -62,7 +62,7 @@ int monty(FILE *f)
 	{
 		number++;
 		free_condition = 0;
-		printf("%s\n", line);
+		/*printf("%s\n", line);*/
 		if (line[0] == '#')
 		{
 			free(line);
