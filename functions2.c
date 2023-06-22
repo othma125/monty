@@ -23,17 +23,17 @@ int nop(char **op_toks, stack_t **stack, unsigned int line_number)
 int pchar(char **op_toks, stack_t **stack, unsigned int number)
 {
 	(void)op_toks;
-	if ((*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", number);
 		return (EXIT_FAILURE);
 	}
-	if ((*stack)->n < 0 || (*stack)->n > 127)
+	if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", number);
 		return (EXIT_FAILURE);
 	}
-	printf("%c\n", (*stack)->n);
+	printf("%c\n", (*stack)->next->n);
 	return (EXIT_SUCCESS);
 }
 /**
