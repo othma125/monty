@@ -84,8 +84,6 @@ int monty(FILE *f)
 		}
 		free(line), _free(op_toks), free_cndtn = 1;
 	}
-	if (number == 0 && line == NULL)
-		fprintf(stderr, "USAGE: monty file\n"), exit_stat = EXIT_FAILURE;
 	free_tokens(op_toks, line, free_cndtn), free_stack(&stack);
 	return (exit_stat);
 }
