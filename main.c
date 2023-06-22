@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 {
 	FILE *monty_file = NULL;
 	int exit_stat;
+	struct stat st;
 
 	if (argc != 2)
 	{
@@ -20,6 +21,12 @@ int main(int argc, char **argv)
 	if (!monty_file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		return (EXIT_FAILURE);
+	}
+	stat(argv[1], &st);
+	if (st.st_size == 0)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
 	exit_stat = monty(monty_file);
