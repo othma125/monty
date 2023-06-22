@@ -40,11 +40,6 @@ unsigned int readLine(FILE *file, char **line)
 	if (ch == '\n')
 		(*line)[len] = ch, len++;
 	(*line)[len] = '\0';
-	if (len == 0)
-	{
-		free(line);
-		line = NULL;
-	}
 	return (len);
 }
 /**
