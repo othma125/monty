@@ -33,7 +33,7 @@ int pchar(char **op_toks, stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", number);
 		return (EXIT_FAILURE);
 	}
-	printf("%c\n", (*stack)->next->n);
+	printf("%c\n", (*stack)->n);
 	return (EXIT_SUCCESS);
 }
 /**
