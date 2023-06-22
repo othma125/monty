@@ -11,7 +11,8 @@ void free_tokens(char **op_toks, char *line, int free_condition)
 {
 	if (free_condition == 0)
 	{
-		free(line);
+		if (line)
+			free(line);
 		if (op_toks)
 			_free(op_toks);
 	}
