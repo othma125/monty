@@ -15,8 +15,7 @@ int add(char **op_toks, stack_t **stack, unsigned int number)
 	}
 
 	(*stack)->next->next->n += (*stack)->next->n;
-	pop(op_toks, stack, number);
-	return (EXIT_SUCCESS);
+	return (pop(op_toks, stack, number));
 }
 
 /**
