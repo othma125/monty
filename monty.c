@@ -74,6 +74,7 @@ int monty(FILE *f)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				number, op_toks[0]);
+			exit_stat = EXIT_FAILURE;
 			break;
 		}
 		if (func(op_toks, &stack, number) == EXIT_FAILURE)
