@@ -48,7 +48,7 @@ unsigned int args_count(char **args)
  */
 int monty(FILE *f)
 {
-	unsigned int number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 0;
+	unsigned int number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 1;
 	char *line = NULL, **op_toks = NULL;
 	stack_t *stack = NULL;
 	int (*func)(char **, stack_t**, unsigned int);
@@ -83,6 +83,11 @@ int monty(FILE *f)
 			break;
 		}
 		free(line), _free(op_toks), free_cndtn = 1;
+	}
+	if (line == NULL)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		return (EXIT_FAILURE);
 	}
 	free_tokens(op_toks, line, free_cndtn), free_stack(&stack);
 	return (exit_stat);
