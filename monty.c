@@ -64,7 +64,8 @@ int monty(FILE *f)
 			continue;
 		}
 		op_toks = _strtok(line);
-		if (args_count(op_toks) == 0 || op_toks[0][0] == '#' || (op_toks[1] && op_toks[1][0] == '#'))
+		if (args_count(op_toks) == 0 || op_toks[0][0] == '#'
+		    || (op_toks[1] && op_toks[1][0] == '#'))
 		{
 			free_tokens(op_toks, line, free_cndtn);
 			continue;
