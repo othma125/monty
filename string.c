@@ -31,7 +31,7 @@ unsigned int readLine(FILE *file, char **line)
 	*line = malloc(max_len);
 	if (*line == NULL)
 		return (0);
-	while (ch != '\n' && ch != EOF && ch != '#')
+	while (ch != '\n' && ch != EOF)
 	{
 		(*line)[len] = ch;
 		len++;
