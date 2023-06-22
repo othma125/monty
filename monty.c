@@ -51,7 +51,7 @@ unsigned int args_count(char **args)
 int monty(FILE *f)
 {
 	unsigned int number = 0, exit_stat = EXIT_SUCCESS, free_cndtn = 0;
-	char *line = NULL, **op_toks = NULL;
+	char *line = NULL, **op_toks = NULL, *ptr;
 	stack_t *stack = NULL;
 	int (*func)(char **, stack_t**, unsigned int);
 
@@ -60,6 +60,10 @@ int monty(FILE *f)
 	while (readLine(f, &line) > 0)
 	{
 		number++, free_cndtn = 0;
+		ptr = line;
+		while(*ptr != '#' && *ptr != '\0')
+			ptr++;
+		*ptr = '\0';
 		if (line[0] == '#' || line[0] == '\n')
 		{
 			free(line);
