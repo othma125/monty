@@ -18,6 +18,7 @@ int push(char **op_toks, stack_t **stack, unsigned int line_number)
 	if (args_count(op_toks) < 2 || _atoi(op_toks[1]) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free(new);
 		return (EXIT_FAILURE);
 	}
 	new->n = atoi(op_toks[1]);
