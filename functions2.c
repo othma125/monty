@@ -28,7 +28,7 @@ int pchar(char **op_toks, stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", number);
 		return (EXIT_FAILURE);
 	}
-	if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", number);
 		return (EXIT_FAILURE);
